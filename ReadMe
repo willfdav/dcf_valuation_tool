@@ -1,0 +1,55 @@
+# DCF Valuation Tool
+
+A Discounted Cash Flow (DCF) application built with Python and Streamlit. This tool pulls real-time financial data from Yahoo Finance to help investors estimate the intrinsic value of a stock.
+
+## Live Demo
+*https://dcfvaluationtool-1.streamlit.app/*
+
+## How to Use the Tool
+
+Valuation is not an exact science; it is a game of probability. The output of this tool is a **prediction**, not a fact. The accuracy of the "Calculated Stock Price" depends entirely on the quality of your assumptions.
+
+Use the sliders in the sidebar to test different scenarios. Here is a guide on how to set your predictors:
+
+### 1. Revenue Growth Rate (Years 1-5)
+This slider estimates how fast the company will grow its sales over the next five years.
+* **How to estimate:** Look at the company's historical growth (provided in the app) and consider the industry average.
+* **Rule of Thumb:** Mature companies often grow at GDP rates (2-3%), while younger, high-growth tech companies might sustain 15-20% growth.
+* *Tip:* Be conservative. It is better to be pleasantly surprised than disappointed.
+
+### 2. Terminal Growth Rate (Year 5+)
+This represents the steady rate the company will grow at **forever** after the initial 5-year period.
+* **Constraint:** This number must be lower than the WACC (Weighted Average Cost of Capital) for the math to work.
+* **Guidance:**
+    * **Mature / Utility Companies:** Stick to 2.0% - 2.5% (roughly the rate of inflation/GDP).
+    * **Newer / High-Potential Companies:** You can justify a slightly higher rate (e.g., 3.0% - 3.5%), but be careful—assuming high growth forever is risky.
+
+### 3. FCF Margin (Free Cash Flow Margin)
+This measures how much cash the company generates for every dollar of revenue.
+* **Default:** The tool defaults to the company's "Trailing Twelve Month" (TTM) margin.
+* **When to Override:** If a company had a bad year (one-time expenses) or is a young startup expecting to become more profitable as it scales, use the **Manual Override** slider to input a margin closer to the industry standard.
+
+---
+
+## Installation & Running Locally
+
+If you want to run this app on your own machine:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/YourUsername/dcf-valuation-tool.git](https://github.com/YourUsername/dcf-valuation-tool.git)
+    cd dcf-valuation-tool
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Run the app:**
+    ```bash
+    streamlit run dcf_app.py
+    ```
+
+## Disclaimer
+This tool is for educational purposes only. The calculated prices are estimates based on user inputs and public data, which may be inaccurate. **This is not financial advice.** Always do your own due diligence before investing.
